@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-5.2.0-dist/css/bootstrap.min.css'%}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+	<title></title>
+	<style type="text/css">
+		a{text-decoration: none;}
+	</style>
+</head>
+<body>
+	<!-- start of nav -->
+		<nav class="navbar navbar-expand-lg bg-light">
+		  <div class="container-fluid">
+		    <a class="navbar-brand" href="#">SACCO</a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarNav" >
+		      <ul class="navbar-nav ml-auto" >
+		        <li class="nav-item">
+		          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="#"></a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="#"></a>
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+		<!-- end of nav -->
+	<div class="container">
+
+		<div class="row">
+			<table class="table table-stripped" id="reportedcases">
+                <tr>
+                    <!-- <th>ID</th> -->
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Contact Number</th>
+                    <th>Address</th>
+					<th>Email</th>
+					<th>Guarantor Name</th>
+					<th>Guarantor Phone Number</th>
+					<th> Guarantor Address</th>
+        
+                </tr>
+	            <tr>
+	                {% for x in LoanDetails %}
+	                <!-- <td>{{x.id}}</td> -->
+	                <td>{{x.firstname}}</td>
+	                <td>{{x.middlename}}</td>
+	                <td>{{x.lastname}}</td>
+	                <td>{{x.contact_no}}</td>
+					<td>{{x.address}}</td> 
+					<td>{{x.email}}</td>
+	                <td>{{x.g_name}}</td>
+					<td>{{x.phone_number}}</td>
+					<td>{{x.g_address}}</td>
+	                <td><a href="update/{{ x.id }}"><i class="bi bi-pen text-primary"></i></a></td>
+	                <td><a href="delete/{{ x.id }}"><i class="bi bi-trash3 text-danger"></i></a></td>
+	                
+	                
+	            </tr>
+	                {% endfor %}
+	            </table>
+	            <a href="{% url 'index' %}"><i class="bi bi-plus-lg btn btn-success"></i></a>
+
+		</div>
+
+	</div>
+
+
+	<script type="text/javascript" src="{% static 'bootstrap-5.2.0-dist/css/bootstrap.min.js'%}"></script>
+</body>
+</html>
